@@ -17,6 +17,10 @@
 
 //for tracking if we should display THANK YOU when display is checked
 @property (nonatomic, assign) BOOL shouldDisplayThankYou;
+
+//for tracking if we should display PRICE: (price) when display is checked
+@property (nonatomic, assign) BOOL shouldDisplayPrice;
+@property (nonatomic, assign) Product requestedProduct;
 @end
 
 
@@ -36,6 +40,21 @@
 	if (self.shouldDisplayThankYou) {
 		self.shouldDisplayThankYou = NO;
 		return @"THANK YOU";
+	}
+	
+	if (self.shouldDisplayPrice) {
+		//create either 0# or ## for the cents label
+		NSInteger cents = self.requestedProduct % 100;
+		NSString *centString;
+		if (cents < 10) {
+			centString = [NSString stringWithFormat:@"0%zd", cents];
+		}
+		else {
+			centString = [NSString stringWithFormat:@"%zd", cents];
+		}
+		
+		//then create the $#.## label for the display value (if displaying the valuation of inserted money)
+		return [NSString stringWithFormat:@"PRICE: $%zd.%@", self.requestedProduct/100,centString];
 	}
 	
 	//if there are no inserted coins, say "INSERT COIN"
@@ -94,6 +113,8 @@
 	if (responseBlock) {
 		responseBlock(NO);
 	}
+	self.shouldDisplayPrice = YES;
+	self.requestedProduct = product;
 }
 
 @end
