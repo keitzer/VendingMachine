@@ -25,7 +25,7 @@ describe(@"Machine", ^{
 		});
 		
 		it(@"should have 0 cents", ^{
-			NSInteger cents = [vendingMachine numberOfInsertedCents];
+			NSInteger cents = [vendingMachine getNumberOfInsertedCents];
 			[[theValue(cents) should] equal:theValue(0)];
 		});
 	});
@@ -43,7 +43,7 @@ describe(@"Machine", ^{
 		
 		it(@"should increase the total number of cents", ^{
 			[vendingMachine insertCoinWasAccepted:Quarter];
-			[[theValue([vendingMachine numberOfInsertedCents]) should] equal:theValue(25)];
+			[[theValue([vendingMachine getNumberOfInsertedCents]) should] equal:theValue(25)];
 		});
 	});
 });

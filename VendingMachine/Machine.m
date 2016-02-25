@@ -8,10 +8,14 @@
 
 #import "Machine.h"
 
+@interface Machine ()
+@property (nonatomic, assign) NSInteger numberOfInsertedCoins;
+@end
+
 @implementation Machine
 
--(NSInteger)numberOfInsertedCents {
-	return 0;
+-(NSInteger)getNumberOfInsertedCents {
+	return self.numberOfInsertedCoins;
 }
 
 -(BOOL)insertCoinWasAccepted:(Coin)coin {
