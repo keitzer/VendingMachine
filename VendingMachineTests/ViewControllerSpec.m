@@ -84,6 +84,7 @@ describe(@"View Controller", ^{
 	context(@"nickel button pressed", ^{
 		it(@"should insert Nickel", ^{
 			NSInteger centsBeforePress = [controller.vendingMachine getNumberOfInsertedCents];
+			[controller.nickelButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 			NSInteger centsAfterPress = [controller.vendingMachine getNumberOfInsertedCents];
 			
 			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Nickel)];
