@@ -52,7 +52,7 @@
                                     <action selector="nickelButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybp-jG-zUq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSERT COIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKo-8q-9zB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSERT COINS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKo-8q-9zB">
                                 <rect key="frame" x="60" y="43" width="200" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="74" id="QGH-0i-cfQ"/>
