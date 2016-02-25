@@ -42,6 +42,17 @@
 -(void)insertCoinAndUpdateDisplay:(Coin)coin {
 	[self.vendingMachine insertCoinWasAccepted:coin];
 	self.displayLabel.text = [self.vendingMachine getScreenDisplayValue];
+	
+	NSInteger cents = [self.vendingMachine getNumberOfCoinReturnCents] % 100;
+	NSString *centString;
+	if (cents < 10) {
+		centString = [NSString stringWithFormat:@"0%zd", cents];
+	}
+	else {
+		centString = [NSString stringWithFormat:@"%zd", cents];
+	}
+	
+	self.coinReturnLabel.text = [NSString stringWithFormat:@"$%zd.%@", [self.vendingMachine getNumberOfCoinReturnCents]/100,centString];
 }
 
 @end
