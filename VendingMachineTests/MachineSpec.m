@@ -104,7 +104,8 @@ describe(@"Machine", ^{
 			});
 			
 			it(@"should display THANK YOU if display checked", ^{
-				
+				NSString *displayValue = [vendingMachine getScreenDisplayValue];
+				[[displayValue should] equal:@"THANK YOU"];
 			});
 		});
 		
