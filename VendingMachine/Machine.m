@@ -10,4 +10,8 @@
 
 @implementation Machine
 
+-(NSInteger)numberOfInsertedCents {
+	return 0;
+}
+
 @end

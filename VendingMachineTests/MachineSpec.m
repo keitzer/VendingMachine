@@ -23,6 +23,11 @@ describe(@"Machine", ^{
 		it(@"should exist", ^{
 			[[vendingMachine shouldNot] beNil];
 		});
+		
+		it(@"should have 0 cents", ^{
+			NSInteger cents = [vendingMachine numberOfInsertedCents];
+			[[theValue(cents) should] equal:theValue(0)];
+		});
 	});
 });
 

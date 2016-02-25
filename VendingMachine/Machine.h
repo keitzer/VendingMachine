@@ -10,4 +10,5 @@
 
 @interface Machine : NSObject
 
+-(NSInteger)numberOfInsertedCents;
 @end
