@@ -141,6 +141,10 @@ describe(@"Machine", ^{
 			it(@"should display PRICE: $1.00 if display checked", ^{
 				[[displayValueRightAfterProductRequest should] equal:@"PRICE: $1.00"];
 			});
+			
+			it(@"should display INSERT COINS if display checked again", ^{
+				[[displayValueOnSecondDisplayCheck should] equal:@"INSERT COINS"];
+			});
 		});
 	});
 });

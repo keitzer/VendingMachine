@@ -42,9 +42,11 @@
 		return @"THANK YOU";
 	}
 	
+	//if we don't have enough cents to purchase the product
 	if (self.shouldDisplayPrice) {
 		self.shouldDisplayPrice = NO;
 		
+		//display PRICE: $#.##
 		return [NSString stringWithFormat:@"PRICE: %@", [self getStringVersionOfCents:self.requestedProduct]];
 	}
 	
