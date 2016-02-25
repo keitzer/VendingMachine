@@ -1,2 +1,10 @@
 # VendingMachine
-vending machine kata
+Vending machine kata
+
+# How To Install
+```
+checkout
+cd (dir)
+pod install
+open xcworkspace file
+```
