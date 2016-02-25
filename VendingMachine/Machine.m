@@ -14,8 +14,8 @@
 	return 0;
 }
 
--(BOOL)insertCoin:(NSString *)coin {
-	if ([coin isEqualToString:@"PENNY"]) {
+-(BOOL)insertCoin:(Coin)coin {
+	if (coin == Penny) {
 		return NO;
 	}
 	

@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, Coin) {
+	Quarter = 25,
+	Dime = 10,
+	Nickel = 5,
+	Penny = 1
+};
+
 @interface Machine : NSObject
 
 -(NSInteger)numberOfInsertedCents;
--(BOOL)insertCoin:(NSString*)coin;
+-(BOOL)insertCoin:(Coin)coin;
 @end
