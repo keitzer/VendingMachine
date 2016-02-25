@@ -80,25 +80,34 @@ describe(@"Machine", ^{
 		
 		it(@"should not dispense if not enough money inserted", ^{
 			__block BOOL didDispense;
-			[vendingMachine requestProduct:Cola withResponse:^(BOOL didDispenseProduct) {
-				didDispense = didDispenseProduct;
+			[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
+				didDispense = productDispensed;
 			}];
 			
 			[[theValue(didDispense) should] equal:theValue(NO)];
 		});
 		
-		it(@"should dispense if enough money is inserted", ^{
-			[vendingMachine insertCoinWasAccepted:Quarter];
-			[vendingMachine insertCoinWasAccepted:Quarter];
-			[vendingMachine insertCoinWasAccepted:Quarter];
-			[vendingMachine insertCoinWasAccepted:Quarter];
+		context(@"with enough money inserted", ^{
+			beforeEach(^{
+				[vendingMachine insertCoinWasAccepted:Quarter];
+				[vendingMachine insertCoinWasAccepted:Quarter];
+				[vendingMachine insertCoinWasAccepted:Quarter];
+				[vendingMachine insertCoinWasAccepted:Quarter];
+			});
 			
-			__block BOOL didDispense;
-			[vendingMachine requestProduct:Cola withResponse:^(BOOL didDispenseProduct) {
-				didDispense = didDispenseProduct;
-			}];
-			[[theValue(didDispense) should] equal:theValue(YES)];
+			it(@"should allow dispensed product", ^{
+				__block BOOL didDispense;
+				[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
+					didDispense = productDispensed;
+				}];
+				[[theValue(didDispense) should] equal:theValue(YES)];
+			});
+			
+			it(@"should display THANK YOU if display checked", ^{
+				
+			});
 		});
+		
 	});
 });
 

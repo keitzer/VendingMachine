@@ -59,7 +59,7 @@
 	return YES;
 }
 
--(void)requestProduct:(Product)product withResponse:(void (^)(BOOL didSucceed))responseBlock {
+-(void)requestProduct:(Product)product withResponse:(void (^)(BOOL productDispensed))responseBlock {
 	if (self.numberOfInsertedCents >= product) {
 		if (responseBlock) {
 			responseBlock(YES);

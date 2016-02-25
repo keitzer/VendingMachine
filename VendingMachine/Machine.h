@@ -29,5 +29,5 @@ typedef NS_ENUM(NSInteger, Product) {
 
 -(BOOL)insertCoinWasAccepted:(Coin)coin;
 
--(void)requestProduct:(Product)product withResponse:(void (^)(BOOL didDispenseProduct))responseBlock;
+-(void)requestProduct:(Product)product withResponse:(void (^)(BOOL productDispensed))responseBlock;
 @end
