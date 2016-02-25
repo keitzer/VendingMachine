@@ -15,6 +15,10 @@
 }
 
 -(BOOL)insertCoin:(NSString *)coin {
+	if ([coin isEqualToString:@"PENNY"]) {
+		return NO;
+	}
+	
 	return YES;
 }
 
