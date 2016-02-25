@@ -13,6 +13,7 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) Machine *vendingMachine;
+-(void)insertCoinAndUpdateDisplay:(Coin)coin;
 @end
 
 SPEC_BEGIN(ViewControllerSpec)
@@ -34,6 +35,13 @@ describe(@"View Controller", ^{
 		
 		it(@"Machine should be initialized", ^{
 			[[controller.vendingMachine shouldNot] beNil];
+		});
+	});
+	
+	context(@"quarter button pressed", ^{
+		it(@"should insert Quarter", ^{
+			[[controller shouldEventually] receive:@selector(insertCoinAndUpdateDisplay:)];
+			
 		});
 	});
 });
