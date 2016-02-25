@@ -88,18 +88,22 @@ describe(@"Machine", ^{
 		});
 		
 		context(@"with enough money inserted", ^{
+			
+			__block BOOL didDispense;
+			
 			beforeEach(^{
 				[vendingMachine insertCoinWasAccepted:Quarter];
 				[vendingMachine insertCoinWasAccepted:Quarter];
 				[vendingMachine insertCoinWasAccepted:Quarter];
 				[vendingMachine insertCoinWasAccepted:Quarter];
-			});
-			
-			it(@"should allow dispensed product", ^{
-				__block BOOL didDispense;
+				
 				[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
 					didDispense = productDispensed;
 				}];
+			});
+			
+			it(@"should allow dispensed product", ^{
+				
 				[[theValue(didDispense) should] equal:theValue(YES)];
 			});
 			

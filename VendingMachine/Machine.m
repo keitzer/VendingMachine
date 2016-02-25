@@ -14,6 +14,9 @@
 
 //for tracking the number of cents in the coin return
 @property (nonatomic, assign) NSInteger numberOfCoinReturnCents;
+
+//for tracking if we should display THANK YOU when display is checked
+@property (nonatomic, assign) BOOL shouldDisplayThankYou;
 @end
 
 
@@ -28,6 +31,11 @@
 }
 
 -(NSString *)getScreenDisplayValue {
+	if (self.shouldDisplayThankYou) {
+		self.shouldDisplayThankYou = NO;
+		return @"THANK YOU";
+	}
+	
 	if (self.numberOfInsertedCents == 0) {
 		return @"INSERT COIN";
 	}
@@ -64,6 +72,7 @@
 		if (responseBlock) {
 			responseBlock(YES);
 		}
+		self.shouldDisplayThankYou = YES;
 		return;
 	}
 	
