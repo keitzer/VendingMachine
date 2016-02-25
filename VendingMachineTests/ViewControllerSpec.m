@@ -99,6 +99,16 @@ describe(@"View Controller", ^{
 		});
 	});
 	
+	context(@"penny button pressed", ^{
+		it(@"should NOT insert the Penny", ^{
+			NSInteger centsBeforePress = [controller.vendingMachine getNumberOfInsertedCents];
+			[controller.pennyButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+			NSInteger centsAfterPress = [controller.vendingMachine getNumberOfInsertedCents];
+			
+			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(0)];
+		});
+	});
+	
 });
 
 SPEC_END
