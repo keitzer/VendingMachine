@@ -46,11 +46,14 @@ describe(@"View Controller", ^{
 	});
 	
 	context(@"quarter button pressed", ^{
-		it(@"should insert Quarter", ^{
-			[[controller.vendingMachine shouldEventually] receive:@selector(insertCoinWasAccepted:) andReturn:theValue(YES) withArguments:theValue(Quarter)];
-			
+		it(@"should insert proper Quarter valuation", ^{
+			NSInteger centsBeforePress = [controller.vendingMachine getNumberOfInsertedCents];
 			[controller.quarterButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+			NSInteger centsAfterPress = [controller.vendingMachine getNumberOfInsertedCents];
+			
+			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Quarter)];
 		});
+		
 	});
 	
 	context(@"dime button pressed", ^{
