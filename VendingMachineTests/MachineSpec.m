@@ -40,6 +40,11 @@ describe(@"Machine", ^{
 			BOOL wasCoinAccepted = [vendingMachine insertCoinWasAccepted:Penny];
 			[[theValue(wasCoinAccepted) should] equal:theValue(NO)];
 		});
+		
+		it(@"should increase the total number of cents", ^{
+			[vendingMachine insertCoinWasAccepted:Quarter];
+			[[theValue([vendingMachine numberOfInsertedCents]) should] equal:theValue(25)];
+		});
 	});
 });
 
