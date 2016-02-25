@@ -31,6 +31,10 @@ describe(@"Machine", ^{
 	});
 	
 	context(@"when coin inserted", ^{
+		beforeEach(^{
+			vendingMachine = [[Machine alloc] init];
+		});
+		
 		it(@"should accept if valid", ^{
 			BOOL wasCoinAccepted = [vendingMachine insertCoinWasAccepted:Quarter];
 			[[theValue(wasCoinAccepted) should] equal:theValue(YES)];
