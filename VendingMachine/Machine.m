@@ -14,7 +14,7 @@
 	return 0;
 }
 
--(BOOL)insertCoin:(Coin)coin {
+-(BOOL)insertCoinWasAccepted:(Coin)coin {
 	if (coin == Penny) {
 		return NO;
 	}
