@@ -12,5 +12,17 @@
 
 SPEC_BEGIN(ViewControllerSpec)
 
+describe(@"View Controller", ^{
+	
+
+	//initialize the proper View Controller from the storyboard
+	__block ViewController *vc;
+	
+	context(@"after view loaded", ^{
+		it(@"should exist", ^{
+			[[vc shouldNot] beNil];
+		});
+	});
+});
 
 SPEC_END
