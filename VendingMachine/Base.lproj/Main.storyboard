@@ -28,6 +28,9 @@
                                 <state key="normal" title="25¢">
                                     <color key="titleColor" red="0.16078431900000001" green="0.7254902124" blue="0.76078432799999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="quarterButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijY-tE-3L2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97H-Il-60x">
                                 <rect key="frame" x="80" y="125" width="80" height="61"/>
@@ -35,6 +38,9 @@
                                 <state key="normal" title="10¢">
                                     <color key="titleColor" red="0.16078431900000001" green="0.7254902124" blue="0.76078432799999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="dimeButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aoa-DG-7j1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XT-qK-81x">
                                 <rect key="frame" x="160" y="125" width="80" height="61"/>
@@ -42,6 +48,9 @@
                                 <state key="normal" title="5¢">
                                     <color key="titleColor" red="0.16078431900000001" green="0.7254902124" blue="0.76078432799999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="nickelButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybp-jG-zUq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSERT COIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKo-8q-9zB">
                                 <rect key="frame" x="60" y="43" width="200" height="74"/>
@@ -85,6 +94,9 @@
                                 <state key="normal" title="1¢">
                                     <color key="titleColor" red="0.16078431900000001" green="0.7254902124" blue="0.76078432799999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="pennyButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="lCd-3g-6xF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -119,6 +131,10 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="coinReturnLabel" destination="dFb-Ay-i9K" id="LRq-fq-CWq"/>
+                        <outlet property="displayLabel" destination="RKo-8q-9zB" id="IVd-I3-Gle"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
