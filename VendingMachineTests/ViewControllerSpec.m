@@ -48,7 +48,7 @@ describe(@"View Controller", ^{
 	context(@"quarter button pressed", ^{
 		it(@"should insert Quarter", ^{
 			[[controller shouldEventually] receive:@selector(insertCoinAndUpdateDisplay:)];
-			
+			[controller.quarterButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 		});
 	});
 });
