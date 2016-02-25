@@ -28,6 +28,10 @@
 }
 
 -(NSString *)getScreenDisplayValue {
+	if (self.numberOfInsertedCents == 0) {
+		return @"INSERT COIN";
+	}
+	
 	NSInteger cents = self.numberOfInsertedCents % 100;
 	NSString *centString;
 	if (cents < 10) {
