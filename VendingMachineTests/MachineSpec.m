@@ -62,6 +62,16 @@ describe(@"Machine", ^{
 			[[[vendingMachine getScreenDisplayValue] should] equal:@"$0.25"];
 		});
 	});
+	
+	context(@"when no coins inserted", ^{
+		beforeEach(^{
+			vendingMachine = [[Machine alloc] init];
+		});
+		
+		it(@"should display INSERT COIN", ^{
+			[[[vendingMachine getScreenDisplayValue] should] equal:@"INSERT COIN"];
+		});
+	});
 });
 
 SPEC_END
