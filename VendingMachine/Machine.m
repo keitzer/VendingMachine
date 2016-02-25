@@ -28,7 +28,16 @@
 }
 
 -(NSString *)getScreenDisplayValue {
-	return @"";
+	NSInteger cents = self.numberOfInsertedCents % 100;
+	NSString *centString;
+	if (cents < 10) {
+		centString = [NSString stringWithFormat:@"0%zd", cents];
+	}
+	else {
+		centString = [NSString stringWithFormat:@"%zd", cents];
+	}
+	
+	return [NSString stringWithFormat:@"$%zd.%@", self.numberOfInsertedCents/100,centString];
 }
 
 // Returns whether or not the inserted coin was accepted or not
