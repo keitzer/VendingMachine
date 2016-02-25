@@ -71,6 +71,14 @@ describe(@"View Controller", ^{
 			
 			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Dime)];
 		});
+		
+		it(@"should update the display label", ^{
+			NSString *beforePress = controller.displayLabel.text;
+			[controller.dimeButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+			NSString *afterPress = controller.displayLabel.text;
+			
+			[[theValue([beforePress isEqualToString:afterPress]) should] equal:theValue(NO)];
+		});
 	});
 	
 });
