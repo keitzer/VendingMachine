@@ -59,21 +59,17 @@
 	return YES;
 }
 
--(NSString *)requestProductWithResponse:(Product)product {
+-(void)requestProduct:(Product)product withResponse:(void (^)(BOOL didSucceed))responseBlock {
 	if (self.numberOfInsertedCents >= product) {
-		return @"THANK YOU";
+		if (responseBlock) {
+			responseBlock(YES);
+		}
+		return;
 	}
 	
-	NSInteger cents = product % 100;
-	NSString *centString;
-	if (cents < 10) {
-		centString = [NSString stringWithFormat:@"0%zd", cents];
+	if (responseBlock) {
+		responseBlock(NO);
 	}
-	else {
-		centString = [NSString stringWithFormat:@"%zd", cents];
-	}
-	
-	return [NSString stringWithFormat:@"PRICE: $%zd.%@", product/100,centString];
 }
 
 @end

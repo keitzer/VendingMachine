@@ -79,8 +79,12 @@ describe(@"Machine", ^{
 		});
 		
 		it(@"should return PRICE: (price) if not enough money inserted", ^{
-			NSString *responseValue = [vendingMachine requestProductWithResponse:Cola];
-			[[responseValue should] equal:@"PRICE: $1.00"];
+			__block BOOL didDispense;
+			[vendingMachine requestProduct:Cola withResponse:^(BOOL didDispenseProduct) {
+				didDispense = didDispenseProduct;
+			}];
+			
+			[[theValue(didDispense) should] equal:theValue(NO)];
 		});
 		
 		it(@"should return THANK YOU if enough money is inserted", ^{
@@ -89,8 +93,11 @@ describe(@"Machine", ^{
 			[vendingMachine insertCoinWasAccepted:Quarter];
 			[vendingMachine insertCoinWasAccepted:Quarter];
 			
-			NSString *responseValue = [vendingMachine requestProductWithResponse:Cola];
-			[[responseValue should] equal:@"THANK YOU"];
+			__block BOOL didDispense;
+			[vendingMachine requestProduct:Cola withResponse:^(BOOL didDispenseProduct) {
+				didDispense = didDispenseProduct;
+			}];
+			[[theValue(didDispense) should] equal:theValue(YES)];
 		});
 	});
 });
