@@ -19,5 +19,7 @@ typedef NS_ENUM(NSInteger, Coin) {
 
 -(NSInteger)getNumberOfInsertedCents;
 -(NSInteger)getNumberOfCoinReturnCents;
+-(NSString*)getScreenDisplayValue;
+
 -(BOOL)insertCoinWasAccepted:(Coin)coin;
 @end

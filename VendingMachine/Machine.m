@@ -27,6 +27,10 @@
 	return self.numberOfCoinReturnCents;
 }
 
+-(NSString *)getScreenDisplayValue {
+	return @"";
+}
+
 // Returns whether or not the inserted coin was accepted or not
 -(BOOL)insertCoinWasAccepted:(Coin)coin {
 	

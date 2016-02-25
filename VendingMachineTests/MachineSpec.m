@@ -56,6 +56,11 @@ describe(@"Machine", ^{
 			[vendingMachine insertCoinWasAccepted:Penny];
 			[[theValue([vendingMachine getNumberOfCoinReturnCents]) should] equal:theValue(1)];
 		});
+		
+		it(@"should display the total amount inserted", ^{
+			[vendingMachine insertCoinWasAccepted:Quarter];
+			[[[vendingMachine getScreenDisplayValue] should] equal:@"$0.25"];
+		});
 	});
 });
 
