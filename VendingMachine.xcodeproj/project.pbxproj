@@ -16,6 +16,7 @@
 		FE7A4A5B1C7F967C00C691CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7A4A591C7F967C00C691CD /* LaunchScreen.storyboard */; };
 		FE7A4A711C7F984B00C691CD /* MachineSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A4A701C7F984B00C691CD /* MachineSpec.m */; };
 		FE7A4A741C7F990B00C691CD /* Machine.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A4A731C7F990B00C691CD /* Machine.m */; };
+		FE7A4A761C7FAE4200C691CD /* ViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A4A751C7FAE4200C691CD /* ViewControllerSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		FE7A4A701C7F984B00C691CD /* MachineSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineSpec.m; sourceTree = "<group>"; };
 		FE7A4A721C7F990B00C691CD /* Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Machine.h; sourceTree = "<group>"; };
 		FE7A4A731C7F990B00C691CD /* Machine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Machine.m; sourceTree = "<group>"; };
+		FE7A4A751C7FAE4200C691CD /* ViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				FE7A4A671C7F967D00C691CD /* Info.plist */,
 				FE7A4A701C7F984B00C691CD /* MachineSpec.m */,
+				FE7A4A751C7FAE4200C691CD /* ViewControllerSpec.m */,
 			);
 			path = VendingMachineTests;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE7A4A711C7F984B00C691CD /* MachineSpec.m in Sources */,
+				FE7A4A761C7FAE4200C691CD /* ViewControllerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
