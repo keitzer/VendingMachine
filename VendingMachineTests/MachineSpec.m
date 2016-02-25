@@ -82,6 +82,16 @@ describe(@"Machine", ^{
 			NSString *responseValue = [vendingMachine requestProductWithResponse:Cola];
 			[[responseValue should] equal:@"PRICE: $1.00"];
 		});
+		
+		it(@"should return THANK YOU if enough money is inserted", ^{
+			[vendingMachine insertCoinWasAccepted:Quarter];
+			[vendingMachine insertCoinWasAccepted:Quarter];
+			[vendingMachine insertCoinWasAccepted:Quarter];
+			[vendingMachine insertCoinWasAccepted:Quarter];
+			
+			NSString *responseValue = [vendingMachine requestProductWithResponse:Cola];
+			[[responseValue should] equal:@"THANK YOU"];
+		});
 	});
 });
 
