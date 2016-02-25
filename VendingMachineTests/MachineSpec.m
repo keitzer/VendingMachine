@@ -32,12 +32,12 @@ describe(@"Machine", ^{
 	
 	context(@"when coin inserted", ^{
 		it(@"should accept if valid", ^{
-			BOOL wasCoinAccepted = [vendingMachine insertCoin:@"QUARTER"];
+			BOOL wasCoinAccepted = [vendingMachine insertCoin:Quarter];
 			[[theValue(wasCoinAccepted) should] equal:theValue(YES)];
 		});
 		
 		it(@"should reject if invalid", ^{
-			BOOL wasCoinAccepted = [vendingMachine insertCoin:@"PENNY"];
+			BOOL wasCoinAccepted = [vendingMachine insertCoin:Penny];
 			[[theValue(wasCoinAccepted) should] equal:theValue(NO)];
 		});
 	});
