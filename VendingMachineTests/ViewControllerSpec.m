@@ -102,6 +102,7 @@ describe(@"View Controller", ^{
 	context(@"penny button pressed", ^{
 		it(@"should add a Penny to the Coin Return", ^{
 			NSInteger centsBeforePress = [controller.vendingMachine getNumberOfCoinReturnCents];
+			[controller.pennyButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 			NSInteger centsAfterPress = [controller.vendingMachine getNumberOfCoinReturnCents];
 			
 			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Penny)];
