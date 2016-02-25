@@ -78,7 +78,7 @@ describe(@"Machine", ^{
 			vendingMachine = [[Machine alloc] init];
 		});
 		
-		it(@"should return PRICE: (price) if not enough money inserted", ^{
+		it(@"should not dispense if not enough money inserted", ^{
 			__block BOOL didDispense;
 			[vendingMachine requestProduct:Cola withResponse:^(BOOL didDispenseProduct) {
 				didDispense = didDispenseProduct;
@@ -87,7 +87,7 @@ describe(@"Machine", ^{
 			[[theValue(didDispense) should] equal:theValue(NO)];
 		});
 		
-		it(@"should return THANK YOU if enough money is inserted", ^{
+		it(@"should dispense if enough money is inserted", ^{
 			[vendingMachine insertCoinWasAccepted:Quarter];
 			[vendingMachine insertCoinWasAccepted:Quarter];
 			[vendingMachine insertCoinWasAccepted:Quarter];
