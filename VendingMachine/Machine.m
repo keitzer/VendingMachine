@@ -73,6 +73,7 @@
 			responseBlock(YES);
 		}
 		self.shouldDisplayThankYou = YES;
+		self.numberOfInsertedCents = 0;
 		return;
 	}
 	
