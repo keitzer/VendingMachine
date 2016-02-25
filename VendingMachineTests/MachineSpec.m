@@ -111,6 +111,11 @@ describe(@"Machine", ^{
 				NSString *displayValue = [vendingMachine getScreenDisplayValue];
 				[[displayValue should] equal:@"THANK YOU"];
 			});
+			
+			it(@"should set inserted coins to 0", ^{
+				NSInteger numCoins = [vendingMachine getNumberOfInsertedCents];
+				[[theValue(numCoins) should] equal:theValue(0)];
+			});
 		});
 		
 	});
