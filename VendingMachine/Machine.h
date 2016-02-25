@@ -18,5 +18,6 @@ typedef NS_ENUM(NSInteger, Coin) {
 @interface Machine : NSObject
 
 -(NSInteger)getNumberOfInsertedCents;
+-(NSInteger)getNumberOfCoinReturnCents;
 -(BOOL)insertCoinWasAccepted:(Coin)coin;
 @end

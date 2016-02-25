@@ -49,6 +49,11 @@ describe(@"Machine", ^{
 			[vendingMachine insertCoinWasAccepted:Quarter];
 			[[theValue([vendingMachine getNumberOfInsertedCents]) should] equal:theValue(25)];
 		});
+		
+		it(@"should place rejected coins in coin return", ^{
+			[vendingMachine insertCoinWasAccepted:Penny];
+			[[theValue([vendingMachine getNumberOfCoinReturnCents]) should] equal:theValue(1)];
+		});
 	});
 });
 

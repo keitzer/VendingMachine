@@ -18,6 +18,10 @@
 	return self.numberOfInsertedCents;
 }
 
+-(NSInteger)getNumberOfCoinReturnCents {
+	return 0;
+}
+
 -(BOOL)insertCoinWasAccepted:(Coin)coin {
 	if (coin == Penny) {
 		return NO;
