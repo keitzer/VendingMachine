@@ -110,6 +110,7 @@ describe(@"View Controller", ^{
 		
 		it(@"should update the Coin Return label", ^{
 			NSString *beforePress = controller.coinReturnLabel.text;
+			[controller.pennyButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 			NSString *afterPress = controller.coinReturnLabel.text;
 			
 			[[theValue([beforePress isEqualToString:afterPress]) should] equal:theValue(NO)];
