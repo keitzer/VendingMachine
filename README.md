@@ -1,6 +1,10 @@
 # VendingMachine
 Vending machine kata
 
+# Requirements
+Xcode
+Cocoapods
+
 # How To Install
 ```
 checkout
