@@ -137,13 +137,42 @@ describe(@"Machine", ^{
 				[[theValue(didDispense) should] equal:theValue(NO)];
 			});
 			
-			
 			it(@"should display PRICE: $1.00 if display checked", ^{
 				[[displayValueRightAfterProductRequest should] equal:@"PRICE: $1.00"];
 			});
 			
 			it(@"should display INSERT COINS if display checked again", ^{
 				[[displayValueOnSecondDisplayCheck should] equal:@"INSERT COINS"];
+			});
+		});
+		
+		context(@"with SOME but not enough money inserted", ^{
+			__block BOOL didDispense;
+			__block NSString *displayValueRightAfterProductRequest;
+			__block NSString *displayValueOnSecondDisplayCheck;
+			
+			beforeEach(^{
+				[vendingMachine insertCoinWasAccepted:Quarter];
+				[vendingMachine insertCoinWasAccepted:Quarter];
+				
+				[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
+					didDispense = productDispensed;
+				}];
+				
+				displayValueRightAfterProductRequest = [vendingMachine getScreenDisplayValue];
+				displayValueOnSecondDisplayCheck = [vendingMachine getScreenDisplayValue];
+			});
+			
+			it(@"should NOT allow dispensed product", ^{
+				[[theValue(didDispense) should] equal:theValue(NO)];
+			});
+			
+			it(@"should display PRICE: $1.00 if display checked", ^{
+				[[displayValueRightAfterProductRequest should] equal:@"PRICE: $1.00"];
+			});
+			
+			it(@"should display $0.50 if display checked again", ^{
+				[[displayValueOnSecondDisplayCheck should] equal:@"$0.50"];
 			});
 		});
 	});
