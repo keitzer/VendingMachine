@@ -40,7 +40,7 @@
 	
 	//if there are no inserted coins, say "INSERT COIN"
 	if (self.numberOfInsertedCents == 0) {
-		return @"INSERT COIN";
+		return @"INSERT COINS";
 	}
 	
 	//create either 0# or ## for the cents label

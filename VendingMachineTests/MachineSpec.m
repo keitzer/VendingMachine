@@ -68,8 +68,8 @@ describe(@"Machine", ^{
 			vendingMachine = [[Machine alloc] init];
 		});
 		
-		it(@"should display INSERT COIN", ^{
-			[[[vendingMachine getScreenDisplayValue] should] equal:@"INSERT COIN"];
+		it(@"should display INSERT COINS", ^{
+			[[[vendingMachine getScreenDisplayValue] should] equal:@"INSERT COINS"];
 		});
 	});
 	
@@ -90,6 +90,8 @@ describe(@"Machine", ^{
 		context(@"with enough money inserted", ^{
 			
 			__block BOOL didDispense;
+			__block NSString *displayValueRightAfterProductRequest;
+			__block NSString *displayValueOnSecondDisplayCheck;
 			
 			beforeEach(^{
 				[vendingMachine insertCoinWasAccepted:Quarter];
@@ -100,21 +102,27 @@ describe(@"Machine", ^{
 				[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
 					didDispense = productDispensed;
 				}];
+				
+				displayValueRightAfterProductRequest = [vendingMachine getScreenDisplayValue];
+				displayValueOnSecondDisplayCheck = [vendingMachine getScreenDisplayValue];
 			});
 			
 			it(@"should allow dispensed product", ^{
-				
 				[[theValue(didDispense) should] equal:theValue(YES)];
 			});
 			
+			
 			it(@"should display THANK YOU if display checked", ^{
-				NSString *displayValue = [vendingMachine getScreenDisplayValue];
-				[[displayValue should] equal:@"THANK YOU"];
+				[[displayValueRightAfterProductRequest should] equal:@"THANK YOU"];
 			});
 			
 			it(@"should set inserted coins to 0", ^{
 				NSInteger numCoins = [vendingMachine getNumberOfInsertedCents];
 				[[theValue(numCoins) should] equal:theValue(0)];
+			});
+			
+			it(@"should display INSERT COINS if display checked again", ^{
+				[[displayValueOnSecondDisplayCheck should] equal:@"INSERT COINS"];
 			});
 		});
 		
