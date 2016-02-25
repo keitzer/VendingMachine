@@ -46,7 +46,7 @@ describe(@"View Controller", ^{
 	});
 	
 	context(@"quarter button pressed", ^{
-		it(@"should insert Quarter and update the display", ^{
+		it(@"should insert Quarter", ^{
 			[[controller.vendingMachine shouldEventually] receive:@selector(insertCoinWasAccepted:) andReturn:theValue(YES) withArguments:theValue(Quarter)];
 			
 			[controller.quarterButton sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -54,12 +54,13 @@ describe(@"View Controller", ^{
 	});
 	
 	context(@"dime button pressed", ^{
-		it(@"should insert Dime and update the display", ^{
+		it(@"should insert Dime", ^{
 			[[controller.vendingMachine shouldEventually] receive:@selector(insertCoinWasAccepted:) andReturn:theValue(YES) withArguments:theValue(Dime)];
 			
 			[controller.dimeButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 		});
 	});
+	
 });
 
 SPEC_END
