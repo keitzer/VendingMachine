@@ -92,6 +92,7 @@ describe(@"View Controller", ^{
 		
 		it(@"should update the display label", ^{
 			NSString *beforePress = controller.displayLabel.text;
+			[controller.nickelButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 			NSString *afterPress = controller.displayLabel.text;
 			
 			[[theValue([beforePress isEqualToString:afterPress]) should] equal:theValue(NO)];
