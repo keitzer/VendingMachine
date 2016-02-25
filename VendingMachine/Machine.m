@@ -9,19 +9,21 @@
 #import "Machine.h"
 
 @interface Machine ()
-@property (nonatomic, assign) NSInteger numberOfInsertedCoins;
+@property (nonatomic, assign) NSInteger numberOfInsertedCents;
 @end
 
 @implementation Machine
 
 -(NSInteger)getNumberOfInsertedCents {
-	return self.numberOfInsertedCoins;
+	return self.numberOfInsertedCents;
 }
 
 -(BOOL)insertCoinWasAccepted:(Coin)coin {
 	if (coin == Penny) {
 		return NO;
 	}
+	
+	self.numberOfInsertedCents += coin;
 	
 	return YES;
 }
