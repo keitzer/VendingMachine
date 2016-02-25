@@ -7,20 +7,33 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Machine.h"
 #import "ViewController.h"
 #import <Kiwi.h>
+
+@interface ViewController ()
+@property (nonatomic, strong) Machine *vendingMachine;
+@end
 
 SPEC_BEGIN(ViewControllerSpec)
 
 describe(@"View Controller", ^{
 	
-
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 	//initialize the proper View Controller from the storyboard
-	__block ViewController *vc;
+	__block ViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"vc"];
+	
+	beforeAll(^{
+		[controller view];
+	});
 	
 	context(@"after view loaded", ^{
 		it(@"should exist", ^{
-			[[vc shouldNot] beNil];
+			[[controller shouldNot] beNil];
+		});
+		
+		it(@"Machine should be initialized", ^{
+			[[controller.vendingMachine shouldNot] beNil];
 		});
 	});
 });
