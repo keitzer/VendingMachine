@@ -10,6 +10,7 @@
 
 @interface Machine ()
 @property (nonatomic, assign) NSInteger numberOfInsertedCents;
+@property (nonatomic, assign) NSInteger numberOfCoinReturnCents;
 @end
 
 @implementation Machine
@@ -19,7 +20,7 @@
 }
 
 -(NSInteger)getNumberOfCoinReturnCents {
-	return 0;
+	return self.numberOfCoinReturnCents;
 }
 
 -(BOOL)insertCoinWasAccepted:(Coin)coin {
