@@ -59,4 +59,8 @@
 	return YES;
 }
 
+-(NSString *)requestProductWithResponse:(Product)product {
+	return @"";
+}
+
 @end

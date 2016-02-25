@@ -15,6 +15,12 @@ typedef NS_ENUM(NSInteger, Coin) {
 	Penny = 1
 };
 
+typedef NS_ENUM(NSInteger, Product) {
+	Cola = 100,
+	Chips = 50,
+	Candy = 65
+};
+
 @interface Machine : NSObject
 
 -(NSInteger)getNumberOfInsertedCents;
@@ -22,4 +28,6 @@ typedef NS_ENUM(NSInteger, Coin) {
 -(NSString*)getScreenDisplayValue;
 
 -(BOOL)insertCoinWasAccepted:(Coin)coin;
+
+-(NSString*)requestProductWithResponse:(Product)product;
 @end

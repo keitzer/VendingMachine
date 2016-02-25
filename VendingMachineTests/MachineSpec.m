@@ -72,6 +72,17 @@ describe(@"Machine", ^{
 			[[[vendingMachine getScreenDisplayValue] should] equal:@"INSERT COIN"];
 		});
 	});
+	
+	context(@"when Product requested", ^{
+		beforeEach(^{
+			vendingMachine = [[Machine alloc] init];
+		});
+		
+		it(@"should return PRICE: (price) if not enough money inserted", ^{
+			NSString *responseValue = [vendingMachine requestProductWithResponse:Cola];
+			[[responseValue should] equal:@"PRICE: $1.00"];
+		});
+	});
 });
 
 SPEC_END
