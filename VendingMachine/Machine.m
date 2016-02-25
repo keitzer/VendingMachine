@@ -32,7 +32,8 @@
 	
 	//if a Penny (currently the only rejected Coin) is inserted...
 	if (coin == Penny) {
-		//...reject it.
+		//...reject it, and add the Penny's worth to the coin return
+		self.numberOfCoinReturnCents += Penny;
 		return NO;
 	}
 	
