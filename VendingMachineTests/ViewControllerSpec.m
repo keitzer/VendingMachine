@@ -107,6 +107,13 @@ describe(@"View Controller", ^{
 			
 			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Penny)];
 		});
+		
+		it(@"should update the Coin Return label", ^{
+			NSString *beforePress = controller.coinReturnLabel.text;
+			NSString *afterPress = controller.coinReturnLabel.text;
+			
+			[[theValue([beforePress isEqualToString:afterPress]) should] equal:theValue(NO)];
+		});
 	});
 	
 });
