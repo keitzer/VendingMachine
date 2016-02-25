@@ -14,4 +14,8 @@
 	return 0;
 }
 
+-(BOOL)insertCoin:(NSString *)coin {
+	return YES;
+}
+
 @end

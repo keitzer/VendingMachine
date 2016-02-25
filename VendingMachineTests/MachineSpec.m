@@ -29,6 +29,18 @@ describe(@"Machine", ^{
 			[[theValue(cents) should] equal:theValue(0)];
 		});
 	});
+	
+	context(@"when coin inserted", ^{
+		it(@"should accept if valid", ^{
+			BOOL wasCoinAccepted = [vendingMachine insertCoin:@"QUARTER"];
+			[[theValue(wasCoinAccepted) should] equal:theValue(YES)];
+		});
+		
+		it(@"should reject if invalid", ^{
+			BOOL wasCoinAccepted = [vendingMachine insertCoin:@"PENNY"];
+			[[theValue(wasCoinAccepted) should] equal:theValue(NO)];
+		});
+	});
 });
 
 SPEC_END

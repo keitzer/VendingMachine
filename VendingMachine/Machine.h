@@ -11,4 +11,5 @@
 @interface Machine : NSObject
 
 -(NSInteger)numberOfInsertedCents;
+-(BOOL)insertCoin:(NSString*)coin;
 @end
