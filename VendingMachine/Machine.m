@@ -60,6 +60,10 @@
 }
 
 -(NSString *)requestProductWithResponse:(Product)product {
+	if (self.numberOfInsertedCents >= product) {
+		return @"THANK YOU";
+	}
+	
 	NSInteger cents = product % 100;
 	NSString *centString;
 	if (cents < 10) {
@@ -70,8 +74,6 @@
 	}
 	
 	return [NSString stringWithFormat:@"PRICE: $%zd.%@", product/100,centString];
-	
-	return @"";
 }
 
 @end
