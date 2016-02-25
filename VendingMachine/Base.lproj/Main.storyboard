@@ -133,7 +133,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="coinReturnLabel" destination="dFb-Ay-i9K" id="LRq-fq-CWq"/>
+                        <outlet property="dimeButton" destination="97H-Il-60x" id="LYN-L1-itv"/>
                         <outlet property="displayLabel" destination="RKo-8q-9zB" id="IVd-I3-Gle"/>
+                        <outlet property="nickelButton" destination="9XT-qK-81x" id="Rt1-M9-kQP"/>
+                        <outlet property="pennyButton" destination="jDb-dW-P60" id="v1b-OO-tnC"/>
+                        <outlet property="quarterButton" destination="tsM-s7-4kM" id="Kr9-Jd-63f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

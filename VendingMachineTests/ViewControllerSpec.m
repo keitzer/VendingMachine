@@ -11,7 +11,14 @@
 #import "ViewController.h"
 #import <Kiwi.h>
 
-@interface ViewController ()
+@interface ViewController (Spec)
+@property (nonatomic, weak) IBOutlet UIButton *quarterButton;
+@property (nonatomic, weak) IBOutlet UIButton *dimeButton;
+@property (nonatomic, weak) IBOutlet UIButton *nickelButton;
+@property (nonatomic, weak) IBOutlet UIButton *pennyButton;
+@property (nonatomic, weak) IBOutlet UILabel *displayLabel;
+@property (nonatomic, weak) IBOutlet UILabel *coinReturnLabel;
+
 @property (nonatomic, strong) Machine *vendingMachine;
 -(void)insertCoinAndUpdateDisplay:(Coin)coin;
 @end

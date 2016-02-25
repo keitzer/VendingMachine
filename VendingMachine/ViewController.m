@@ -10,6 +10,12 @@
 #import "Machine.h"
 
 @interface ViewController ()
+
+@property (nonatomic, weak) IBOutlet UIButton *quarterButton;
+@property (nonatomic, weak) IBOutlet UIButton *dimeButton;
+@property (nonatomic, weak) IBOutlet UIButton *nickelButton;
+@property (nonatomic, weak) IBOutlet UIButton *pennyButton;
+
 @property (nonatomic, weak) IBOutlet UILabel *displayLabel;
 @property (nonatomic, weak) IBOutlet UILabel *coinReturnLabel;
 @property (nonatomic, strong) Machine *vendingMachine;
