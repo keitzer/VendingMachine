@@ -81,6 +81,15 @@ describe(@"View Controller", ^{
 		});
 	});
 	
+	context(@"nickel button pressed", ^{
+		it(@"should insert Nickel", ^{
+			NSInteger centsBeforePress = [controller.vendingMachine getNumberOfInsertedCents];
+			NSInteger centsAfterPress = [controller.vendingMachine getNumberOfInsertedCents];
+			
+			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Nickel)];
+		});
+	});
+	
 });
 
 SPEC_END
