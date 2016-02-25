@@ -78,14 +78,6 @@ describe(@"Machine", ^{
 			vendingMachine = [[Machine alloc] init];
 		});
 		
-		it(@"should not dispense if not enough money inserted", ^{
-			__block BOOL didDispense;
-			[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
-				didDispense = productDispensed;
-			}];
-			
-			[[theValue(didDispense) should] equal:theValue(NO)];
-		});
 		
 		context(@"with enough money inserted", ^{
 			
@@ -126,6 +118,30 @@ describe(@"Machine", ^{
 			});
 		});
 		
+		context(@"with no enough money inserted", ^{
+			
+			__block BOOL didDispense;
+			__block NSString *displayValueRightAfterProductRequest;
+			__block NSString *displayValueOnSecondDisplayCheck;
+			
+			beforeEach(^{
+				[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
+					didDispense = productDispensed;
+				}];
+				
+				displayValueRightAfterProductRequest = [vendingMachine getScreenDisplayValue];
+				displayValueOnSecondDisplayCheck = [vendingMachine getScreenDisplayValue];
+			});
+			
+			it(@"should NOT allow dispensed product", ^{
+				[[theValue(didDispense) should] equal:theValue(NO)];
+			});
+			
+			
+			it(@"should display PRICE: $1.00 if display checked", ^{
+				[[displayValueRightAfterProductRequest should] equal:@"PRICE: $1.00"];
+			});
+		});
 	});
 });
 
