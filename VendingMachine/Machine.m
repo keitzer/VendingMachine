@@ -60,6 +60,17 @@
 }
 
 -(NSString *)requestProductWithResponse:(Product)product {
+	NSInteger cents = product % 100;
+	NSString *centString;
+	if (cents < 10) {
+		centString = [NSString stringWithFormat:@"0%zd", cents];
+	}
+	else {
+		centString = [NSString stringWithFormat:@"%zd", cents];
+	}
+	
+	return [NSString stringWithFormat:@"PRICE: $%zd.%@", product/100,centString];
+	
 	return @"";
 }
 
