@@ -31,6 +31,8 @@ describe(@"Machine", ^{
 	});
 	
 	context(@"when coin inserted", ^{
+		
+		//ensure the Vending Machine is fresh before each subsequent test
 		beforeEach(^{
 			vendingMachine = [[Machine alloc] init];
 		});

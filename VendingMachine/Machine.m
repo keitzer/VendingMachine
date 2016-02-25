@@ -9,9 +9,13 @@
 #import "Machine.h"
 
 @interface Machine ()
+//for tracking how many cents are "inserted"
 @property (nonatomic, assign) NSInteger numberOfInsertedCents;
+
+//for tracking the number of cents in the coin return
 @property (nonatomic, assign) NSInteger numberOfCoinReturnCents;
 @end
+
 
 @implementation Machine
 
@@ -23,8 +27,12 @@
 	return self.numberOfCoinReturnCents;
 }
 
+// Returns whether or not the inserted coin was accepted or not
 -(BOOL)insertCoinWasAccepted:(Coin)coin {
+	
+	//if a Penny (currently the only rejected Coin) is inserted...
 	if (coin == Penny) {
+		//...reject it.
 		return NO;
 	}
 	
