@@ -43,18 +43,9 @@
 	}
 	
 	if (self.shouldDisplayPrice) {
-		//create either 0# or ## for the cents label
-		NSInteger cents = self.requestedProduct % 100;
-		NSString *centString;
-		if (cents < 10) {
-			centString = [NSString stringWithFormat:@"0%zd", cents];
-		}
-		else {
-			centString = [NSString stringWithFormat:@"%zd", cents];
-		}
+		self.shouldDisplayPrice = NO;
 		
-		//then create the $#.## label for the display value (if displaying the valuation of inserted money)
-		return [NSString stringWithFormat:@"PRICE: $%zd.%@", self.requestedProduct/100,centString];
+		return [NSString stringWithFormat:@"PRICE: %@", [self getStringVersionOfCents:self.requestedProduct]];
 	}
 	
 	//if there are no inserted coins, say "INSERT COIN"
@@ -62,18 +53,7 @@
 		return @"INSERT COINS";
 	}
 	
-	//create either 0# or ## for the cents label
-	NSInteger cents = self.numberOfInsertedCents % 100;
-	NSString *centString;
-	if (cents < 10) {
-		centString = [NSString stringWithFormat:@"0%zd", cents];
-	}
-	else {
-		centString = [NSString stringWithFormat:@"%zd", cents];
-	}
-	
-	//then create the $#.## label for the display value (if displaying the valuation of inserted money)
-	return [NSString stringWithFormat:@"$%zd.%@", self.numberOfInsertedCents/100,centString];
+	return [self getStringVersionOfCents:self.numberOfInsertedCents];
 }
 
 // Returns whether or not the inserted coin was accepted or not
@@ -115,6 +95,21 @@
 	}
 	self.shouldDisplayPrice = YES;
 	self.requestedProduct = product;
+}
+
+-(NSString*)getStringVersionOfCents:(NSInteger)totalCents {
+	//create either 0# or ## for the cents label
+	NSInteger centValue = totalCents % 100;
+	NSString *centString;
+	if (centValue < 10) {
+		centString = [NSString stringWithFormat:@"0%zd", centValue];
+	}
+	else {
+		centString = [NSString stringWithFormat:@"%zd", centValue];
+	}
+	
+	//then create the $#.## label for the display value (if displaying the valuation of inserted money)
+	return [NSString stringWithFormat:@"$%zd.%@", totalCents/100, centString];
 }
 
 @end
