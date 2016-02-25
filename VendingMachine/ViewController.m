@@ -47,6 +47,7 @@
 
 -(void)insertCoinAndUpdateDisplay:(Coin)coin {
 	[self.vendingMachine insertCoinWasAccepted:coin];
+	
 	self.displayLabel.text = [self.vendingMachine getScreenDisplayValue];
 	
 	NSInteger cents = [self.vendingMachine getNumberOfCoinReturnCents] % 100;
