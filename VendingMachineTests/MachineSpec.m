@@ -18,6 +18,8 @@ describe(@"Machine", ^{
 	
 	context(@"when first created", ^{
 		
+		vendingMachine = [[Machine alloc] init];
+		
 		it(@"should exist", ^{
 			[[vendingMachine shouldNot] beNil];
 		});
