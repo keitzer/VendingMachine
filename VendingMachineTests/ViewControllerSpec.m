@@ -65,9 +65,11 @@ describe(@"View Controller", ^{
 	
 	context(@"dime button pressed", ^{
 		it(@"should insert Dime", ^{
-			[[controller.vendingMachine shouldEventually] receive:@selector(insertCoinWasAccepted:) andReturn:theValue(YES) withArguments:theValue(Dime)];
-			
+			NSInteger centsBeforePress = [controller.vendingMachine getNumberOfInsertedCents];
 			[controller.dimeButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+			NSInteger centsAfterPress = [controller.vendingMachine getNumberOfInsertedCents];
+			
+			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Dime)];
 		});
 	});
 	
