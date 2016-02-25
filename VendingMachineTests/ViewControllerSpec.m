@@ -89,6 +89,13 @@ describe(@"View Controller", ^{
 			
 			[[theValue(centsAfterPress - centsBeforePress) should] equal:theValue(Nickel)];
 		});
+		
+		it(@"should update the display label", ^{
+			NSString *beforePress = controller.displayLabel.text;
+			NSString *afterPress = controller.displayLabel.text;
+			
+			[[theValue([beforePress isEqualToString:afterPress]) should] equal:theValue(NO)];
+		});
 	});
 	
 });
