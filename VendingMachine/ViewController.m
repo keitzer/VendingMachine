@@ -52,7 +52,7 @@
 -(void)insertCoinAndUpdateDisplay:(Coin)coin {
 	[self.vendingMachine insertCoinWasAccepted:coin];
 	
-	self.displayLabel.text = [self.vendingMachine getScreenDisplayValue];
+	[self updateDisplayLabel];
 	
 	NSInteger cents = [self.vendingMachine getNumberOfCoinReturnCents] % 100;
 	NSString *centString;
@@ -66,8 +66,14 @@
 	self.coinReturnLabel.text = [NSString stringWithFormat:@"$%zd.%@", [self.vendingMachine getNumberOfCoinReturnCents]/100,centString];
 }
 
+-(void)updateDisplayLabel {
+	self.displayLabel.text = [self.vendingMachine getScreenDisplayValue];
+}
+
 -(IBAction)colaButtonPressed {
-	
+	[self.vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
+		[self updateDisplayLabel];
+	}];
 }
 
 -(IBAction)chipsButtonPressed {

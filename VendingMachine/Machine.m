@@ -91,12 +91,13 @@
 		return;
 	}
 	
+	
+	self.shouldDisplayPrice = YES;
+	self.requestedProduct = product;
 	//If we don't have enough, send back "No"
 	if (responseBlock) {
 		responseBlock(NO);
 	}
-	self.shouldDisplayPrice = YES;
-	self.requestedProduct = product;
 }
 
 -(NSString*)getStringVersionOfCents:(NSInteger)totalCents {
