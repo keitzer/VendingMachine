@@ -124,7 +124,7 @@ describe(@"View Controller", ^{
 	context(@"purchase cola button pressed", ^{
 		
 		it(@"should request the Cola product", ^{
-			[[controller.vendingMachine shouldEventually] receive:@selector(requestProduct:withResponse:)];
+			[[controller.vendingMachine shouldEventually] receive:@selector(requestProduct:withResponse:) withArguments:theValue(Cola), any()];
 			
 			[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 		});
@@ -154,7 +154,7 @@ describe(@"View Controller", ^{
 				[[displayTextAfterPurchase shouldNot] equal:displayTextBeforePurchase];
 			});
 			
-			it(@"should display INSERT COINS after 2 seconds", ^{
+			it(@"should display something else (INSERT COINS) after 2 seconds", ^{
 				
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
@@ -191,6 +191,7 @@ describe(@"View Controller", ^{
 			});
 		});
 	});
+	
 });
 
 SPEC_END
