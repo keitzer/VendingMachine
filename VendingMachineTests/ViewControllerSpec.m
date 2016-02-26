@@ -146,10 +146,15 @@ describe(@"View Controller", ^{
 				[[displayText should] equal:@"THANK YOU"];
 			});
 			
-			it(@"should display current inserted money after 2 seconds", ^{
-				[[controller.displayLabel.text shouldEventuallyBeforeTimingOutAfter(2.0)] equal:@"$0.00"];
+			it(@"should display INSERT COINS after 2 seconds", ^{
 				
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				KWFutureObject *futureTextValue = [KWFutureObject futureObjectWithBlock:^id{
+					return controller.displayLabel.text;
+				}];
+				
+				[[futureTextValue shouldEventuallyBeforeTimingOutAfter(2.0)] equal:@"INSERT COINS"];
 			});
 		});
 		
