@@ -231,6 +231,11 @@ describe(@"View Controller", ^{
 				[[displayTextAfterPurchase shouldNot] equal:displayTextBeforePurchase];
 			});
 			
+			it(@"should update the coin return label to the correct amount", ^{
+				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				[[controller.coinReturnLabel.text should] equal:@"$0.55"];
+			});
+			
 			it(@"should display something else (INSERT COINS) after 2 seconds", ^{
 				
 				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -251,7 +256,7 @@ describe(@"View Controller", ^{
 				displayTextBeforePurchaseAttempt = controller.displayLabel.text;
 			});
 			
-			it(@"should display PRICE: $1.00", ^{
+			it(@"should display PRICE: $0.50", ^{
 				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
 				displayTextAfterPurchaseAttempt = controller.displayLabel.text;
@@ -322,7 +327,7 @@ describe(@"View Controller", ^{
 				displayTextBeforePurchaseAttempt = controller.displayLabel.text;
 			});
 			
-			it(@"should display PRICE: $1.00", ^{
+			it(@"should display PRICE: $0.65", ^{
 				[controller.candyButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
 				displayTextAfterPurchaseAttempt = controller.displayLabel.text;
