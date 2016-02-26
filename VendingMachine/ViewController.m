@@ -53,6 +53,10 @@
 	[self.vendingMachine insertCoinWasAccepted:coin];
 	
 	[self updateDisplayLabel];
+}
+
+-(void)updateDisplayLabel {
+	self.displayLabel.text = [self.vendingMachine getScreenDisplayValue];
 	
 	NSInteger cents = [self.vendingMachine getNumberOfCoinReturnCents] % 100;
 	NSString *centString;
@@ -64,10 +68,6 @@
 	}
 	
 	self.coinReturnLabel.text = [NSString stringWithFormat:@"$%zd.%@", [self.vendingMachine getNumberOfCoinReturnCents]/100,centString];
-}
-
--(void)updateDisplayLabel {
-	self.displayLabel.text = [self.vendingMachine getScreenDisplayValue];
 }
 
 -(IBAction)colaButtonPressed {
