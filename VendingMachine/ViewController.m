@@ -16,6 +16,10 @@
 @property (nonatomic, weak) IBOutlet UIButton *nickelButton;
 @property (nonatomic, weak) IBOutlet UIButton *pennyButton;
 
+@property (nonatomic, weak) IBOutlet UIButton *colaButton;
+@property (nonatomic, weak) IBOutlet UIButton *chipsButton;
+@property (nonatomic, weak) IBOutlet UIButton *candyButton;
+
 @property (nonatomic, weak) IBOutlet UILabel *displayLabel;
 @property (nonatomic, weak) IBOutlet UILabel *coinReturnLabel;
 @property (nonatomic, strong) Machine *vendingMachine;
@@ -60,6 +64,18 @@
 	}
 	
 	self.coinReturnLabel.text = [NSString stringWithFormat:@"$%zd.%@", [self.vendingMachine getNumberOfCoinReturnCents]/100,centString];
+}
+
+-(IBAction)colaButtonPressed {
+	
+}
+
+-(IBAction)chipsButtonPressed {
+	
+}
+
+-(IBAction)candyButtonPressed {
+	
 }
 
 @end
