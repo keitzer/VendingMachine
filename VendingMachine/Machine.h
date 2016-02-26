@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, Product) {
 	Candy = 65
 };
 
+typedef void (^ProductDispenseBlock)(BOOL productDispensed);
+
 @interface Machine : NSObject
 
 -(NSInteger)getNumberOfInsertedCents;
@@ -29,5 +31,5 @@ typedef NS_ENUM(NSInteger, Product) {
 
 -(BOOL)insertCoinWasAccepted:(Coin)coin;
 
--(void)requestProduct:(Product)product withResponse:(void (^)(BOOL productDispensed))responseBlock;
+-(void)requestProduct:(Product)product withResponse:(ProductDispenseBlock)responseBlock;
 @end

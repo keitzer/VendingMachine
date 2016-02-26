@@ -74,7 +74,7 @@
 	return YES;
 }
 
--(void)requestProduct:(Product)product withResponse:(void (^)(BOOL productDispensed))responseBlock {
+-(void)requestProduct:(Product)product withResponse:(ProductDispenseBlock)responseBlock {
 	
 	//first check if we have enough coins to purchase the product requested
 	if (self.numberOfInsertedCents >= product) {

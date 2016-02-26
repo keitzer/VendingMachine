@@ -122,20 +122,28 @@ describe(@"View Controller", ^{
 	});
 	
 	context(@"purchase cola button pressed", ^{
+		
+		it(@"should request the Cola product", ^{
+			[[controller.vendingMachine shouldEventually] receive:@selector(requestProduct:withResponse:)];
+			
+			[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+		});
+		
 		context(@"with enough money inserted", ^{
 			beforeEach(^{
+				controller.vendingMachine = [[Machine alloc] init];
+				
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 			});
 			
-			it(@"should allow cola to be dispensed", ^{
-				[[controller.vendingMachine shouldEventually] receive:@selector(requestProduct:withResponse:) andReturn:nil withArguments:theValue(Cola), ^(BOOL didDispense){
-					[[theValue(didDispense) should] equal:theValue(YES)];
-				}];
-				
+			it(@"should dispense cola (by saying THANK YOU)", ^{
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				NSString *displayText = controller.displayLabel.text;
+				[[displayText should] equal:@"THANK YOU"];
 			});
 		});
 	});
