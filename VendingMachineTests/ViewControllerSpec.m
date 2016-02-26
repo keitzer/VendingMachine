@@ -146,6 +146,19 @@ describe(@"View Controller", ^{
 				[[displayText should] equal:@"THANK YOU"];
 			});
 		});
+		
+		context(@"with not enough money inserted", ^{
+			beforeEach(^{
+				controller.vendingMachine = [[Machine alloc] init];
+			});
+			
+			it(@"should display PRICE: $1.00", ^{
+				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				NSString *displayText = controller.displayLabel.text;
+				[[displayText should] equal:@"PRICE: $1.00"];
+			});
+		});
 	});
 });
 
