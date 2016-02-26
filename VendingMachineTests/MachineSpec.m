@@ -84,12 +84,16 @@ describe(@"Machine", ^{
 			__block BOOL didDispense;
 			__block NSString *displayValueRightAfterProductRequest;
 			__block NSString *displayValueOnSecondDisplayCheck;
+			__block NSInteger numCoinsInReturnBeforePurchase;
 			
 			beforeEach(^{
 				[vendingMachine insertCoinWasAccepted:Quarter];
 				[vendingMachine insertCoinWasAccepted:Quarter];
 				[vendingMachine insertCoinWasAccepted:Quarter];
 				[vendingMachine insertCoinWasAccepted:Quarter];
+				[vendingMachine insertCoinWasAccepted:Quarter];
+				
+				numCoinsInReturnBeforePurchase = [vendingMachine getNumberOfCoinReturnCents];
 				
 				[vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
 					didDispense = productDispensed;
@@ -115,6 +119,11 @@ describe(@"Machine", ^{
 			
 			it(@"should display INSERT COINS if display checked again", ^{
 				[[displayValueOnSecondDisplayCheck should] equal:@"INSERT COINS"];
+			});
+			
+			it(@"should put remaining money in coin return", ^{
+				NSInteger numCoinsInReturnAfterPurchase = [vendingMachine getNumberOfCoinReturnCents];
+				[[theValue(numCoinsInReturnAfterPurchase - numCoinsInReturnBeforePurchase) should] equal:theValue(25)];
 			});
 		});
 		
