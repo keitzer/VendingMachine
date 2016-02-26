@@ -74,35 +74,29 @@
 
 -(IBAction)colaButtonPressed {
 	[self.vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
-		[self.displayUpdateTimer invalidate];
-		self.displayUpdateTimer = nil;
-		
-		[self updateDisplayLabel];
-		
-		self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
+		[self cancelTimerAndUpdateDisplayTwiceAfterPurchaseRequest];
 	}];
 }
 
 -(IBAction)chipsButtonPressed {
 	[self.vendingMachine requestProduct:Chips withResponse:^(BOOL productDispensed) {
-		[self.displayUpdateTimer invalidate];
-		self.displayUpdateTimer = nil;
-		
-		[self updateDisplayLabel];
-		
-		self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
+		[self cancelTimerAndUpdateDisplayTwiceAfterPurchaseRequest];
 	}];
 }
 
 -(IBAction)candyButtonPressed {
 	[self.vendingMachine requestProduct:Candy withResponse:^(BOOL productDispensed) {
-		[self.displayUpdateTimer invalidate];
-		self.displayUpdateTimer = nil;
-		
-		[self updateDisplayLabel];
-		
-		self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
+		[self cancelTimerAndUpdateDisplayTwiceAfterPurchaseRequest];
 	}];
+}
+
+-(void)cancelTimerAndUpdateDisplayTwiceAfterPurchaseRequest {
+	[self.displayUpdateTimer invalidate];
+	self.displayUpdateTimer = nil;
+	
+	[self updateDisplayLabel];
+	
+	self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
 }
 
 @end
