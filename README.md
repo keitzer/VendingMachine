@@ -3,6 +3,8 @@ Vending machine kata, from here: https://github.com/guyroyse/vending-machine-kat
 
 First 3 features implemented using TDD.
 
+Runs on any iOS device with iOS 8.0 and above. (including iPad).
+
 # Requirements
 ```
 Xcode

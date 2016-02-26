@@ -23,6 +23,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsM-s7-4kM">
                                 <rect key="frame" x="9" y="125" width="64" height="64"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="64" id="R7S-KM-dtg"/>
                                     <constraint firstAttribute="height" constant="61" id="ZWt-hp-cIV"/>
                                     <constraint firstAttribute="width" secondItem="tsM-s7-4kM" secondAttribute="height" multiplier="1:1" id="kQV-KA-pWl"/>
                                 </constraints>
@@ -147,7 +148,7 @@
                             <constraint firstItem="9XT-qK-81x" firstAttribute="leading" secondItem="97H-Il-60x" secondAttribute="trailing" constant="11" id="2ua-t0-Mhv"/>
                             <constraint firstItem="YkF-tk-Q77" firstAttribute="height" secondItem="sGz-HA-vut" secondAttribute="height" id="7MX-DT-Xbj"/>
                             <constraint firstItem="tsM-s7-4kM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="11" id="7eh-Rv-wet"/>
-                            <constraint firstItem="tsM-s7-4kM" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="8Dk-hd-chU"/>
+                            <constraint firstItem="tsM-s7-4kM" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" priority="750" id="8Dk-hd-chU"/>
                             <constraint firstItem="9XT-qK-81x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="40" id="AXm-TV-HAH"/>
                             <constraint firstItem="YkF-tk-Q77" firstAttribute="top" secondItem="sGz-HA-vut" secondAttribute="top" id="BYM-XT-Aqr"/>
                             <constraint firstItem="wIV-f7-M7O" firstAttribute="top" secondItem="sGz-HA-vut" secondAttribute="top" id="Bsh-Nz-5MJ"/>
@@ -184,6 +185,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7eh-Rv-wet"/>
+                                <exclude reference="8Dk-hd-chU"/>
                                 <exclude reference="fcj-fz-J7z"/>
                                 <exclude reference="i7W-qC-1Ga"/>
                                 <exclude reference="2ua-t0-Mhv"/>
