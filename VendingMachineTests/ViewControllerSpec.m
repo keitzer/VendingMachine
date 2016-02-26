@@ -158,7 +158,7 @@ describe(@"View Controller", ^{
 			});
 		});
 		
-		context(@"with not enough money inserted", ^{
+		context(@"with no enough money inserted", ^{
 			beforeEach(^{
 				controller.vendingMachine = [[Machine alloc] init];
 			});
@@ -168,6 +168,16 @@ describe(@"View Controller", ^{
 				
 				NSString *displayText = controller.displayLabel.text;
 				[[displayText should] equal:@"PRICE: $1.00"];
+			});
+			
+			it(@"should display INSERT COINS after 2 seconds", ^{
+				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				KWFutureObject *futureTextValue = [KWFutureObject futureObjectWithBlock:^id{
+					return controller.displayLabel.text;
+				}];
+				
+				[[futureTextValue shouldEventuallyBeforeTimingOutAfter(2.0)] equal:@"INSERT COINS"];
 			});
 		});
 	});
