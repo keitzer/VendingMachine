@@ -145,6 +145,12 @@ describe(@"View Controller", ^{
 				NSString *displayText = controller.displayLabel.text;
 				[[displayText should] equal:@"THANK YOU"];
 			});
+			
+			it(@"should display current inserted money after 2 seconds", ^{
+				[[controller.displayLabel.text shouldEventuallyBeforeTimingOutAfter(2.0)] equal:@"$0.00"];
+				
+				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+			});
 		});
 		
 		context(@"with not enough money inserted", ^{
