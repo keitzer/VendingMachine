@@ -307,6 +307,11 @@ describe(@"View Controller", ^{
 				[[displayTextAfterPurchase shouldNot] equal:displayTextBeforePurchase];
 			});
 			
+			it(@"should update the coin return label to the correct amount", ^{
+				[controller.candyButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				[[controller.coinReturnLabel.text should] equal:@"$0.50"];
+			});
+			
 			it(@"should display something else (INSERT COINS) after 2 seconds", ^{
 				
 				[controller.candyButton sendActionsForControlEvents:UIControlEventTouchUpInside];
