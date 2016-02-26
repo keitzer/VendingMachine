@@ -233,7 +233,7 @@ describe(@"View Controller", ^{
 			
 			it(@"should update the coin return label to the correct amount", ^{
 				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-				[[controller.coinReturnLabel.text should] equal:@"$0.55"];
+				[[controller.coinReturnLabel.text should] equal:@"$0.50"];
 			});
 			
 			it(@"should display something else (INSERT COINS) after 2 seconds", ^{
