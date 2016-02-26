@@ -79,6 +79,10 @@
 	//first check if we have enough coins to purchase the product requested
 	if (self.numberOfInsertedCents >= product) {
 		
+		//send the remaining coins into Coin Return
+		NSInteger remainingAmount = self.numberOfInsertedCents - product;
+		self.numberOfCoinReturnCents += remainingAmount;
+		
 		//if so, we should display THANK YOU, and set our coins to 0
 		self.shouldDisplayThankYou = YES;
 		self.numberOfInsertedCents = 0;
