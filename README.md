@@ -15,9 +15,11 @@ checkout
 cd (dir)
 pod install
 open xcworkspace file
+choose simulator or device
+Cmd+R or Product->Run
 ```
 
-# How to run tests
+# How To Run Tests
 ```
 Cmd+U 
 or
