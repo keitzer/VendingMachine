@@ -19,6 +19,10 @@
 @property (nonatomic, weak) IBOutlet UILabel *displayLabel;
 @property (nonatomic, weak) IBOutlet UILabel *coinReturnLabel;
 
+@property (nonatomic, weak) IBOutlet UIButton *colaButton;
+@property (nonatomic, weak) IBOutlet UIButton *chipsButton;
+@property (nonatomic, weak) IBOutlet UIButton *candyButton;
+
 @property (nonatomic, strong) Machine *vendingMachine;
 -(void)insertCoinAndUpdateDisplay:(Coin)coin;
 @end
@@ -117,6 +121,24 @@ describe(@"View Controller", ^{
 		});
 	});
 	
+	context(@"purchase cola button pressed", ^{
+		context(@"with enough money inserted", ^{
+			beforeEach(^{
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+			});
+			
+			it(@"should allow cola to be dispensed", ^{
+				[[controller.vendingMachine shouldEventually] receive:@selector(requestProduct:withResponse:) andReturn:nil withArguments:theValue(Cola), ^(BOOL didDispense){
+					[[theValue(didDispense) should] equal:theValue(YES)];
+				}];
+				
+				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+			});
+		});
+	});
 });
 
 SPEC_END
