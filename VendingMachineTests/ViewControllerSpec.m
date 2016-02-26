@@ -141,6 +141,7 @@ describe(@"View Controller", ^{
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				
 				displayTextBeforePurchase = controller.displayLabel.text;
 			});
@@ -152,6 +153,11 @@ describe(@"View Controller", ^{
 				
 				//just make sure the text is NOT the same from before to after
 				[[displayTextAfterPurchase shouldNot] equal:displayTextBeforePurchase];
+			});
+			
+			it(@"should update the coin return label to the correct amount", ^{
+				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				[[controller.coinReturnLabel.text should] equal:@"$0.25"];
 			});
 			
 			it(@"should display something else (INSERT COINS) after 2 seconds", ^{
