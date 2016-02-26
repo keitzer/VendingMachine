@@ -23,6 +23,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *displayLabel;
 @property (nonatomic, weak) IBOutlet UILabel *coinReturnLabel;
 @property (nonatomic, strong) Machine *vendingMachine;
+
+@property (nonatomic, strong) NSTimer *displayUpdateTimer;
 @end
 
 @implementation ViewController
@@ -74,9 +76,7 @@
 	[self.vendingMachine requestProduct:Cola withResponse:^(BOOL productDispensed) {
 		[self updateDisplayLabel];
 		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			[self updateDisplayLabel];
-		});
+		self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
 	}];
 }
 
@@ -84,9 +84,7 @@
 	[self.vendingMachine requestProduct:Chips withResponse:^(BOOL productDispensed) {
 		[self updateDisplayLabel];
 		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			[self updateDisplayLabel];
-		});
+		self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
 	}];
 }
 
@@ -94,9 +92,7 @@
 	[self.vendingMachine requestProduct:Candy withResponse:^(BOOL productDispensed) {
 		[self updateDisplayLabel];
 		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			[self updateDisplayLabel];
-		});
+		self.displayUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDisplayLabel) userInfo:nil repeats:NO];
 	}];
 }
 
