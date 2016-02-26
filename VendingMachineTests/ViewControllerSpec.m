@@ -192,6 +192,77 @@ describe(@"View Controller", ^{
 		});
 	});
 	
+	context(@"purchase Chips button pressed", ^{
+		
+		it(@"should request the Chips product", ^{
+			[[controller.vendingMachine shouldEventually] receive:@selector(requestProduct:withResponse:) withArguments:theValue(Chips), any()];
+			
+			[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+		});
+		
+		context(@"with enough money inserted", ^{
+			
+			__block NSString *displayTextBeforePurchase;
+			__block NSString *displayTextAfterPurchase;
+			
+			beforeAll(^{
+				controller.vendingMachine = [[Machine alloc] init];
+				
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				
+				displayTextBeforePurchase = controller.displayLabel.text;
+			});
+			
+			it(@"should dispense cola (by saying THANK YOU)", ^{
+				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				displayTextAfterPurchase = controller.displayLabel.text;
+				
+				//just make sure the text is NOT the same from before to after
+				[[displayTextAfterPurchase shouldNot] equal:displayTextBeforePurchase];
+			});
+			
+			it(@"should display something else (INSERT COINS) after 2 seconds", ^{
+				
+				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				//just make sure the text is NOT the same from after to 2-seconds after
+				[[expectFutureValue(controller.displayLabel.text) shouldNotAfterWaitOf(2.0)] equal:displayTextAfterPurchase];
+			});
+		});
+		
+		context(@"with no enough money inserted", ^{
+			
+			__block NSString *displayTextBeforePurchaseAttempt;
+			__block NSString *displayTextAfterPurchaseAttempt;
+			
+			beforeAll(^{
+				controller.vendingMachine = [[Machine alloc] init];
+				
+				displayTextBeforePurchaseAttempt = controller.displayLabel.text;
+			});
+			
+			it(@"should display PRICE: $1.00", ^{
+				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				displayTextAfterPurchaseAttempt = controller.displayLabel.text;
+				
+				//just make sure the text is NOT the same from before to after
+				[[displayTextAfterPurchaseAttempt shouldNot] equal:displayTextBeforePurchaseAttempt];
+			});
+			
+			it(@"should display same text after 2 seconds", ^{
+				[controller.chipsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+				
+				//just make sure the text is NOT the same from after to 2-seconds after
+				[[expectFutureValue(controller.displayLabel.text) shouldAfterWaitOf(2.0)] equal:displayTextBeforePurchaseAttempt];
+			});
+		});
+	});
+	
 });
 
 SPEC_END
