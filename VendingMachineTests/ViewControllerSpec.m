@@ -134,7 +134,7 @@ describe(@"View Controller", ^{
 			__block NSString *displayTextBeforePurchase;
 			__block NSString *displayTextAfterPurchase;
 			
-			beforeEach(^{
+			beforeAll(^{
 				controller.vendingMachine = [[Machine alloc] init];
 				
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
@@ -158,30 +158,36 @@ describe(@"View Controller", ^{
 				
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
+				//just make sure the text is NOT the same from after to 2-seconds after
 				[[expectFutureValue(controller.displayLabel.text) shouldNotAfterWaitOf(2.0)] equal:displayTextAfterPurchase];
 			});
 		});
 		
 		context(@"with no enough money inserted", ^{
-			beforeEach(^{
+			
+			__block NSString *displayTextBeforePurchaseAttempt;
+			__block NSString *displayTextAfterPurchaseAttempt;
+			
+			beforeAll(^{
 				controller.vendingMachine = [[Machine alloc] init];
+				
+				displayTextBeforePurchaseAttempt = controller.displayLabel.text;
 			});
 			
 			it(@"should display PRICE: $1.00", ^{
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
-				NSString *displayText = controller.displayLabel.text;
-				[[displayText should] equal:@"PRICE: $1.00"];
+				displayTextAfterPurchaseAttempt = controller.displayLabel.text;
+				
+				//just make sure the text is NOT the same from before to after
+				[[displayTextAfterPurchaseAttempt shouldNot] equal:displayTextBeforePurchaseAttempt];
 			});
 			
-			it(@"should display INSERT COINS after 2 seconds", ^{
+			it(@"should display same text after 2 seconds", ^{
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
-				KWFutureObject *futureTextValue = [KWFutureObject futureObjectWithBlock:^id{
-					return controller.displayLabel.text;
-				}];
-				
-				[[futureTextValue shouldEventuallyBeforeTimingOutAfter(2.0)] equal:@"INSERT COINS"];
+				//just make sure the text is NOT the same from after to 2-seconds after
+				[[expectFutureValue(controller.displayLabel.text) shouldAfterWaitOf(2.0)] equal:displayTextBeforePurchaseAttempt];
 			});
 		});
 	});
