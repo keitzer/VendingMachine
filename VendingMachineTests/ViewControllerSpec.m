@@ -130,6 +130,10 @@ describe(@"View Controller", ^{
 		});
 		
 		context(@"with enough money inserted", ^{
+			
+			__block NSString *displayTextBeforePurchase;
+			__block NSString *displayTextAfterPurchase;
+			
 			beforeEach(^{
 				controller.vendingMachine = [[Machine alloc] init];
 				
@@ -137,24 +141,24 @@ describe(@"View Controller", ^{
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
 				[controller.vendingMachine insertCoinWasAccepted:Quarter];
+				
+				displayTextBeforePurchase = controller.displayLabel.text;
 			});
 			
 			it(@"should dispense cola (by saying THANK YOU)", ^{
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
-				NSString *displayText = controller.displayLabel.text;
-				[[displayText should] equal:@"THANK YOU"];
+				displayTextAfterPurchase = controller.displayLabel.text;
+				
+				//just make sure the text is NOT the same from before to after
+				[[displayTextAfterPurchase shouldNot] equal:displayTextBeforePurchase];
 			});
 			
 			it(@"should display INSERT COINS after 2 seconds", ^{
 				
 				[controller.colaButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 				
-				KWFutureObject *futureTextValue = [KWFutureObject futureObjectWithBlock:^id{
-					return controller.displayLabel.text;
-				}];
-				
-				[[futureTextValue shouldEventuallyBeforeTimingOutAfter(2.0)] equal:@"INSERT COINS"];
+				[[expectFutureValue(controller.displayLabel.text) shouldNotAfterWaitOf(2.0)] equal:displayTextAfterPurchase];
 			});
 		});
 		
